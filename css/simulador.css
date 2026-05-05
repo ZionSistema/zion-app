@@ -1,0 +1,979 @@
+/* ========================================
+   RESET + MOBILE PWA
+======================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ========================================
+   BODY
+======================================== */
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+
+  background: #f8fafc;
+
+  min-height: 100dvh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 8px;
+}
+
+/* ========================================
+   CARD PRINCIPAL
+======================================== */
+
+.app-simulador {
+  width: 100%;
+  max-width: 360px;
+
+  background: white;
+
+  border-radius: 28px;
+
+  padding: 12px 10px;
+
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+}
+
+/* ========================================
+   HEADER
+======================================== */
+
+.header-simulador {
+  display: flex;
+
+  flex-direction: row;
+
+  align-items: center;
+
+  gap: 14px;
+
+  margin-bottom: 20px;
+
+  padding-bottom: 14px;
+
+  border-bottom: 1px solid #e2e8f0;
+}
+
+/* ========================================
+   LOGO EMPRESA
+======================================== */
+
+.logo-empresa {
+  width: 88px;
+  height: 88px;
+
+  object-fit: contain;
+
+  border-radius: 24px;
+
+  background: #ffffff;
+
+  border: 1px solid rgba(30, 41, 59, 0.04);
+
+  padding: 10px;
+
+  flex-shrink: 0;
+}
+/* ========================================
+   TEXTO CLIENTE
+======================================== */
+
+.cliente-info h2 {
+  font-size: 12px;
+
+  color: #0f172a;
+
+  line-height: 1.45;
+
+  margin-bottom: 6px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.2px;
+}
+
+.cliente-info p {
+  font-size: 14px;
+  color: #64748b;
+  flex: 1;
+}
+
+/* ========================================
+   CONTEÚDO
+======================================== */
+
+.simulador-conteudo {
+  margin-top: 12px;
+}
+
+/* ========================================
+   CAMPO VALOR
+======================================== */
+
+.campo-grupo {
+  margin-bottom: 20px;
+}
+
+.campo-grupo label {
+  display: block;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  color: #334155;
+
+  margin-bottom: 8px;
+}
+
+/* INPUT valor da venda */
+
+/* INPUT branco puro */
+
+/* INPUT branco real */
+
+.campo-grupo input {
+  width: 100%;
+
+  height: 54px;
+
+  background: #ffffff;
+
+  border: 1px solid rgba(0, 0, 0, 0.04);
+
+  border-radius: 18px;
+
+  padding: 0 20px;
+
+  font-size: 18px;
+
+  font-weight: 700;
+
+  color: #0f172a;
+
+  outline: none;
+
+  box-shadow: none;
+}
+
+/* Edge / Chrome */
+
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px #ffffff inset !important;
+
+  -webkit-text-fill-color: #0f172a !important;
+}
+
+.campo-grupo input::placeholder {
+  color: #94a3b8;
+  font-weight: 600;
+}
+
+/* corrige foco do navegador */
+
+/* foco premium em âmbar */
+
+/* foco alinhado com o botão escuro */
+
+/* foco premium com a mesma identidade do botão */
+
+.campo-grupo input:focus {
+  background: #ffffff !important;
+
+  border: 1px solid rgba(217, 119, 6, 0.28);
+
+  box-shadow:
+    0 0 0 2px rgba(255, 236, 179, 0.55),
+    0 0 12px rgba(217, 119, 6, 0.12);
+
+  outline: none;
+}
+
+/* ========================================
+   TIPO CÁLCULO
+======================================== */
+
+.tipo-calculo {
+  display: flex;
+
+  gap: 12px;
+}
+
+/* ========================================
+   TIPO CÁLCULO
+======================================== */
+
+.tipo-calculo {
+  display: flex;
+
+  gap: 12px;
+}
+
+.btn-tipo {
+  flex: 1;
+
+  height: 36px;
+
+  border: none;
+
+  border-radius: 14px;
+
+  background: rgba(15, 23, 42, 0.04);
+
+  color: #334155;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+}
+
+.btn-tipo.ativo {
+  background: #334155;
+
+  color: white;
+
+  box-shadow: 0 6px 18px rgba(51, 65, 85, 0.18);
+}
+/* ========================================
+   MODALIDADES
+======================================== */
+
+.grupo-modalidades {
+  display: flex;
+
+  gap: 12px;
+
+  margin-bottom: 20px;
+}
+
+.btn-modalidade {
+  flex: 1;
+
+  height: 34px;
+
+  border: 1px solid rgba(30, 41, 59, 0.14);
+
+  border-radius: 14px;
+
+  background: white;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  color: #334155;
+
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+}
+
+.btn-modalidade.ativa {
+  background: rgba(34, 197, 94, 0.08);
+
+  border-color: rgba(34, 197, 94, 0.28);
+
+  color: #15803d;
+}
+
+/* ========================================
+   BANDEIRAS
+======================================== */
+
+.grupo-bandeiras {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 8px;
+
+  margin-top: 10px;
+}
+
+.bandeira-card {
+  width: 100%;
+
+  height: 42px;
+
+  border: 1px solid rgba(30, 41, 59, 0.1);
+
+  border-radius: 12px;
+
+  background: rgba(255, 255, 255, 0.75);
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+}
+
+.bandeira-card img {
+  max-width: 42px;
+
+  max-height: 24px;
+
+  object-fit: contain;
+}
+
+.bandeira-card.ativa {
+  border: 2px solid rgba(34, 197, 94, 0.22);
+
+  background: rgba(34, 197, 94, 0.08);
+
+  transform: scale(1.03);
+}
+
+/* ========================================
+   PARCELAS
+======================================== */
+
+.grupo-parcelas {
+  margin-top: 24px;
+}
+
+.grupo-parcelas label {
+  display: block;
+
+  font-size: 13px;
+  text-align: center;
+
+  font-weight: 600;
+
+  color: #475569;
+
+  margin-bottom: 10px;
+}
+
+.controle-parcelas {
+  margin: 0 auto;
+  display: flex;
+
+  align-items: center;
+
+  width: fit-content;
+
+  border: 1px solid rgba(30, 41, 59, 0.1);
+
+  border-radius: 14px;
+
+  background: rgba(255, 255, 255, 0.8);
+
+  overflow: hidden;
+}
+
+.btn-parcela {
+  width: 38px;
+
+  height: 36px;
+
+  border: none;
+
+  background: transparent;
+
+  font-size: 18px;
+
+  font-weight: 700;
+
+  color: #334155;
+
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+}
+
+.btn-parcela:hover {
+  background: #334155;
+
+  color: white;
+}
+
+.btn-parcela:hover {
+  background: rgba(34, 197, 94, 0.08);
+
+  color: #15803d;
+}
+
+#numeroParcela {
+  min-width: 52px;
+
+  height: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background: rgba(34, 197, 94, 0.08);
+
+  color: #15803d;
+
+  font-size: 18px;
+
+  font-weight: 700;
+
+  border-left: 1px solid rgba(30, 41, 59, 0.08);
+
+  border-right: 1px solid rgba(30, 41, 59, 0.08);
+}
+
+/* ========================================
+   IDENTIDADE CLIENTE
+======================================== */
+
+.empresa-cliente {
+  font-size: 13px;
+
+  font-weight: 600;
+
+  color: #2e7d32;
+
+  margin-bottom: 4px;
+}
+
+/* Nome da empresa */
+.empresa-cliente strong {
+  color: #14b8a6;
+
+  font-weight: 700;
+}
+
+.subtitulo-cliente {
+  font-size: 12px;
+  font-weight: 500;
+
+  color: #f57c00;
+}
+
+/* ========================================
+   BLOCOS PREMIUM
+======================================== */
+
+.bloco-simulacao,
+.bloco-operacao {
+  /*background: rgba(30, 58, 95, 0.045); */
+  background: rgba(30, 41, 59, 0.05);
+  border: 1px solid rgba(30, 58, 95, 0.08);
+
+  border-radius: 22px;
+
+  padding: 12px;
+
+  margin-bottom: 14px;
+}
+
+.bloco-operacao {
+  padding-top: 24px;
+}
+/* ========================================
+   TABS DO PRODUTO
+======================================== */
+
+/* ========================================
+   TABS DO PRODUTO
+======================================== */
+
+/* ========================================
+   TABS DO PRODUTO
+======================================== */
+
+/* ========================================
+   TABS DO PRODUTO
+======================================== */
+
+/* ========================================
+   TABS DO PRODUTO
+======================================== */
+
+.grupo-tabs {
+  display: flex;
+
+  justify-content: center;
+
+  gap: 12px;
+
+  width: 100%;
+
+  margin: 14px auto 16px auto;
+}
+
+.btn-tab {
+  flex: 1;
+
+  height: 36px;
+
+  border: 1px solid rgba(30, 41, 59, 0.1);
+
+  background: white;
+
+  color: #64748b;
+
+  border-radius: 14px;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+}
+
+/* apenas selecionado */
+.btn-tab.ativo {
+  background: rgba(34, 197, 94, 0.08);
+
+  border-color: rgba(34, 197, 94, 0.22);
+
+  color: #15803d;
+}
+/* ======================================
+   BLOCO RESULTADO
+====================================== */
+
+.bloco-resultado {
+  margin-top: 22px;
+
+  padding: 14px;
+
+  border-radius: 24px;
+
+  border: 1px solid rgba(30, 41, 59, 0.08);
+
+  /*background: rgba(248, 250, 252, 0.75); */
+  background: rgba(34, 197, 94, 0.07);
+
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
+}
+
+.titulo-resultado {
+  font-size: 14px;
+
+  font-weight: 700;
+
+  color: #334155;
+
+  margin-bottom: 16px;
+
+  padding-bottom: 10px;
+
+  border-bottom: 1px solid rgba(30, 41, 59, 0.06);
+}
+
+.linha-resultado {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  margin-bottom: 14px;
+
+  font-size: 14px;
+
+  color: #64748b;
+}
+
+.linha-resultado strong {
+  font-size: 18px;
+
+  font-weight: 700;
+
+  color: #0f172a;
+}
+/* =====================================
+   FILIPETA DIGITAL
+===================================== */
+
+.resumo-operacao {
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
+
+#tituloOperacao {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1f2a44;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+#subtituloOperacao {
+  margin-top: 0px;
+
+  font-size: 12px;
+  font-weight: 500;
+
+  color: #64748b;
+}
+
+.linha-divisoria {
+  width: 100%;
+
+  height: 1px;
+
+  background: rgba(15, 23, 42, 0.12);
+
+  margin: 5px 0 5px 0;
+}
+
+.bloco-resultado .linha-resultado {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 1px 0;
+
+  margin-bottom: 2px;
+}
+
+.bloco-resultado .linha-resultado span {
+  font-size: 13px;
+
+  color: #64748b;
+
+  font-weight: 500;
+}
+
+.bloco-resultado .linha-resultado strong {
+  font-size: 15px;
+
+  font-weight: 700;
+
+  color: #0f172a;
+}
+#resultadoPrincipal {
+  font-size: 18px;
+
+  font-weight: 700;
+
+  color: #0f172a;
+}
+/* fonte da filipeta */
+.bloco-resultado {
+  font-family: "Roboto Mono", monospace;
+}
+
+/* ======================================
+   BLOCO RESULTADO PREMIUM ÂMBAR
+====================================== */
+
+.bloco-resultado {
+  margin-top: 22px;
+
+  padding: 16px;
+
+  border-radius: 24px;
+
+  font-family: "Roboto Mono", monospace;
+
+  /* gradiente premium */
+  background: linear-gradient(
+    145deg,
+    rgba(255, 248, 220, 0.95),
+    rgba(255, 236, 179, 0.88),
+    rgba(255, 213, 79, 0.18)
+  );
+
+  border: 1px solid rgba(217, 119, 6, 0.15);
+
+  box-shadow:
+    0 10px 30px rgba(217, 119, 6, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.65);
+
+  position: relative;
+
+  overflow: hidden;
+}
+
+/* brilho superior */
+.bloco-resultado::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: -30%;
+
+  width: 60%;
+  height: 100%;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.25),
+    transparent
+  );
+
+  transform: skewX(-20deg);
+}
+
+.titulo-resultado {
+  font-size: 14px;
+
+  font-weight: 700;
+
+  color: #92400e;
+
+  margin-bottom: 16px;
+
+  padding-bottom: 10px;
+
+  border-bottom: 1px solid rgba(180, 83, 9, 0.12);
+}
+
+#tituloOperacao {
+  font-size: 16px;
+
+  font-weight: 700;
+
+  color: #78350f;
+
+  letter-spacing: 0.5px;
+}
+
+#subtituloOperacao {
+  font-size: 12px;
+
+  font-weight: 500;
+
+  color: #a16207;
+}
+
+.bloco-resultado .linha-resultado span {
+  font-size: 13px;
+
+  color: #92400e;
+
+  font-weight: 500;
+}
+
+.bloco-resultado .linha-resultado strong {
+  font-size: 15px;
+
+  font-weight: 700;
+
+  color: #451a03;
+}
+
+#resultadoPrincipal {
+  font-size: 20px;
+
+  font-weight: 700;
+
+  color: #78350f;
+}
+
+.linha-divisoria {
+  background: rgba(180, 83, 9, 0.15);
+}
+
+/* TESTE — card valor da venda em âmbar */
+
+/* BLOCO SUPERIOR — versão viva e confortável */
+
+/* fundo do card com a cor do botão */
+
+.bloco-simulacao {
+  background: #334155;
+
+  border: 1px solid rgba(255, 255, 255, 0.06);
+
+  border-radius: 22px;
+
+  padding: 12px;
+
+  margin-bottom: 14px;
+
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.1);
+}
+.campo-grupo label {
+  color: #ffffff;
+}
+
+/* botão ativo com identidade premium */
+
+.btn-tipo.ativo {
+  background: linear-gradient(
+    145deg,
+    rgba(255, 248, 220, 0.98),
+    rgba(255, 236, 179, 0.92),
+    rgba(255, 213, 79, 0.25)
+  );
+
+  color: #78350f;
+
+  border: 1px solid rgba(217, 119, 6, 0.14);
+
+  box-shadow: 0 6px 16px rgba(217, 119, 6, 0.08);
+}
+/* botão inativo visível no fundo escuro */
+
+.btn-tipo {
+  flex: 1;
+
+  height: 36px;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  border-radius: 14px;
+
+  background: rgba(255, 255, 255, 0.05);
+
+  color: rgba(255, 255, 255, 0.88);
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+}
+/* modalidade ativa com identidade premium */
+
+/* produto ativo premium */
+
+.btn-tab.ativo {
+  background: linear-gradient(
+    145deg,
+    rgba(255, 248, 220, 0.98),
+    rgba(255, 236, 179, 0.92),
+    rgba(255, 213, 79, 0.25)
+  );
+
+  border: 1px solid rgba(217, 119, 6, 0.14);
+
+  color: #78350f;
+
+  box-shadow: 0 6px 16px rgba(217, 119, 6, 0.08);
+
+  box-shadow:
+    0 2px 4px rgba(255, 255, 255, 0.35) inset,
+    0 6px 14px rgba(217, 119, 6, 0.08),
+    0 1px 2px rgba(120, 53, 15, 0.08);
+}
+
+/* ======================================
+   TOAST COPIADO
+====================================== */
+
+.toast-copiado {
+  position: fixed;
+
+  bottom: 28px;
+
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  background: rgba(51, 65, 85, 0.96);
+
+  color: #ffffff;
+
+  padding: 10px 18px;
+
+  border-radius: 14px;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  z-index: 9999;
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  transition: all 0.25s ease;
+
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.16);
+}
+
+.toast-copiado.mostrar {
+  opacity: 1;
+
+  transform: translateX(-50%) translateY(-4px);
+}
+
+/* refinamento sutil */
+
+.bloco-operacao {
+  border: 1px solid rgba(51, 65, 85, 0.08) !important;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.8),
+    0 4px 12px rgba(15, 23, 42, 0.02) !important;
+}
+
+/* identidade visual da empresa */
+
+.cliente-info .empresa-cliente {
+  color: #2e7d32 !important;
+
+  font-size: 13px;
+
+  font-weight: 600;
+}
+
+.cliente-info .subtitulo-cliente {
+  color: #f57c00 !important;
+
+  font-size: 12px;
+
+  font-weight: 500;
+}
+
+/* texto base + nome da empresa separado */
+
+.cliente-info .empresa-cliente {
+  color: #64748b !important;
+
+  font-size: 13px;
+
+  font-weight: 600;
+}
+
+/* somente o nome da empresa */
+.cliente-info .empresa-cliente strong {
+  color: #2e7d32 !important;
+
+  font-weight: 700;
+}
+
+/* navegação superior — elegante e sem roubar protagonismo */
+
+.btn-tab.ativo {
+  background: #334155;
+
+  color: #ffffff;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    0 4px 12px rgba(15, 23, 42, 0.08);
+
+  transform: translateY(-1px);
+}

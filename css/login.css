@@ -1,0 +1,332 @@
+/* =====================================================
+   🔷 BASE DA PÁGINA
+===================================================== */
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+
+  /* 🔥 FUNDO COM IMAGEM */
+  background: url("../img/sistema/backgroundzion.png") no-repeat center center;
+  background-size: cover;
+
+  position: relative;
+}
+
+/* 🔥 CAMADA DE BLUR + ESCURECIMENTO DO FUNDO */
+/* =====================================================
+   🔷 OVERLAY DO BACKGROUND (AJUSTE FINO)
+===================================================== */
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  /* 🔥 menos escuro = imagem aparece mais */
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.25));
+
+  /* 🔥 leve desfoque elegante */
+  backdrop-filter: blur(4px);
+
+  z-index: 0;
+}
+
+/* =====================================================
+   🔷 CARD CENTRAL (LOGIN)
+===================================================== */
+
+/* =====================================================
+   🔷 CARD FINAL (PROPORÇÃO SCFP)
+===================================================== */
+
+.card {
+  position: relative;
+  z-index: 1;
+
+  background: #ffffff;
+  color: #1e293b;
+
+  padding: 25px 22px; /* 🔥 menos padding lateral */
+  border-radius: 18px;
+
+  width: 100%;
+  max-width: 270px; /* 🔥 AGORA SIM (esse é o segredo) */
+
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+
+  text-align: center;
+}
+
+/* =====================================================
+   🔷 LOGO
+===================================================== */
+
+.logo-container {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+/* =====================================================
+   🔷 LOGO MAIS FORTE (IDENTIDADE VISUAL)
+===================================================== */
+
+.logo-container img {
+  width: 90px; /* 🔥 menos dominante */
+  margin-bottom: 8px;
+}
+
+/* =====================================================
+   🔷 TÍTULOS
+===================================================== */
+
+.titulo-login {
+  margin: 10px 0 5px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.subtitulo-login {
+  font-size: 13px;
+  color: #16a34a; /* 🔥 verde da marca */
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+/* =====================================================
+   🔷 INPUTS
+===================================================== */
+
+/* =====================================================
+   🔷 INPUTS FINOS (ELEGANTES)
+===================================================== */
+
+input {
+  width: 100%;
+  padding: 10px 12px;
+  margin-top: 10px;
+
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+
+  font-size: 13px;
+
+  background: #e2e8f0;
+
+  transition: all 0.2s ease;
+
+  box-sizing: border-box; /* 🔥 ESSENCIAL */
+
+  height: 45px; /* 🔥 PADRÃO FIXO */
+  line-height: 45px;
+}
+
+input:focus {
+  border-color: #22c55e;
+  background: #ffffff;
+
+  box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.2);
+}
+
+/* =====================================================
+   🔷 BOTÕES
+===================================================== */
+
+/* =====================================================
+   🔷 BOTÕES COM MELHOR PROPORÇÃO
+===================================================== */
+
+/* =====================================================
+   🔷 BOTÕES (VERSÃO FINAL ELEGANTE - SCFP STYLE)
+===================================================== */
+
+button {
+  width: 100%;
+  padding: 10px 12px; /* 🔥 menor altura */
+  margin-top: 10px;
+
+  border-radius: 8px;
+  border: none;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+/* =====================================================
+   🔷 BOTÃO PRINCIPAL (Entrar)
+===================================================== */
+
+button.primary {
+  background: #22c55e; /* 🔥 cor sólida mais elegante */
+  color: white;
+}
+
+/* 🔥 hover mais sutil */
+button.primary:hover {
+  background: #16a34a;
+}
+
+/* =====================================================
+   🔷 BOTÃO SECUNDÁRIO (Limpar campos)
+===================================================== */
+
+button.secondary {
+  background: #e5e7eb;
+  color: #1e293b;
+}
+
+button.secondary:hover {
+  background: #d1d5db;
+}
+
+/* =====================================================
+   🔷 BOTÃO ESCURO (Esqueci senha)
+===================================================== */
+
+button.dark {
+  background: #1e293b;
+  color: white;
+}
+/* 🔷 espaçamento botão recuperar senha */
+button.dark {
+  margin-top: 10px;
+}
+
+button.dark:hover {
+  background: #0f172a;
+}
+/* =====================================================
+   🔷 ALERTA (NOTIFICAÇÕES)
+===================================================== */
+
+.alerta {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+
+  background: #22c55e;
+  color: white;
+
+  padding: 14px 18px;
+  border-radius: 8px;
+
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: 0.3s;
+
+  z-index: 999;
+  font-weight: bold;
+}
+
+/* 🔷 ALERTA DE ERRO */
+.alerta.erro {
+  background: #ef4444;
+}
+
+/* 🔷 MOSTRAR ALERTA */
+.alerta.mostrar {
+  opacity: 1;
+  transform: translateY(0);
+}
+.card input:first-of-type {
+  margin-top: 15px;
+}
+/* 🔷 ajuste fino de espaçamento */
+.titulo-login {
+  margin-top: 5px;
+  font-size: 16px;
+}
+
+.subtitulo-login {
+  margin-bottom: 15px;
+  font-size: 12px;
+}
+/* 🔔 ALERTA MODERNO */
+.alerta {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 260px;
+  max-width: 90%;
+  padding: 14px 18px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  z-index: 9999;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+/* 🔷 SUCESSO */
+.alerta.sucesso {
+  background: linear-gradient(135deg, #16a34a, #22c55e);
+  color: #fff;
+  box-shadow: 0 8px 25px rgba(34, 197, 94, 0.4);
+}
+
+/* 🔴 ERRO */
+.alerta.erro {
+  background: linear-gradient(135deg, #dc2626, #ef4444);
+  color: #fff;
+  box-shadow: 0 8px 25px rgba(239, 68, 68, 0.4);
+}
+
+/* 🔥 VISÍVEL */
+.alerta.mostrar {
+  opacity: 1;
+  top: 30px;
+}
+
+/* ============================
+   👁 INPUT SENHA PROFISSIONAL
+============================ */
+
+.input-senha-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.input-senha-container input {
+  width: 100%;
+  padding-right: 40px;
+}
+
+/* ÍCONE */
+.toggle-senha {
+  position: absolute;
+  right: 12px;
+
+  top: 50%;
+  transform: translateY(-50%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 100%;
+
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.toggle-senha:hover {
+  opacity: 1;
+}

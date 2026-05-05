@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Simulador</title>
+
+    <link id="faviconEmpresa" rel="icon" href="img/sistema/favicon.png" />
+    <!-- PWA -->
+    <link rel="manifest" href="manifest.json" />
+
+    <meta name="theme-color" content="#334155" />
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+
+    <link rel="stylesheet" href="css/simulador.css" />
+  </head>
+
+  <body>
+    <div class="app-simulador">
+      <!-- HEADER -->
+      <header class="header-simulador">
+        <img id="logoEmpresa" class="logo-empresa" src="" alt="Empresa" />
+
+        <div class="cliente-info">
+          <h2 id="nomeCliente">Olá, Cliente!</h2>
+
+          <p class="empresa-cliente" id="empresaCliente">Cliente: Empresa</p>
+
+          <p class="subtitulo-cliente">Seja bem-vindo.</p>
+        </div>
+      </header>
+
+      <!-- PRODUTO -->
+      <div class="grupo-tabs" id="grupoTabs">
+        <button
+          class="btn-tab ativo"
+          id="btnTabMaquininha"
+          data-tipo="maquininha"
+        >
+          Maquininha
+        </button>
+
+        <button class="btn-tab" id="btnTabLink" data-tipo="link">
+          Link de Pagamento
+        </button>
+      </div>
+
+      <!-- CONTEÚDO -->
+      <main class="simulador-conteudo">
+        <!-- BLOCO VALOR -->
+        <div class="bloco-simulacao">
+          <div class="campo-grupo">
+            <label>Valor da venda</label>
+
+            <input type="text" id="valorVenda" placeholder="R$ 0,00" />
+          </div>
+
+          <div class="tipo-calculo">
+            <button class="btn-tipo ativo" id="btnPagarTaxa">Pagar taxa</button>
+
+            <button class="btn-tipo" id="btnRepassarTaxa">Repassar taxa</button>
+          </div>
+        </div>
+
+        <!-- BLOCO OPERAÇÃO -->
+        <div class="bloco-operacao">
+          <div class="grupo-modalidades">
+            <button class="btn-modalidade ativa" data-modalidade="pix">
+              PIX
+            </button>
+
+            <button class="btn-modalidade" data-modalidade="debito">
+              DÉBITO
+            </button>
+
+            <button class="btn-modalidade" data-modalidade="credito">
+              CRÉDITO
+            </button>
+          </div>
+
+          <div class="grupo-bandeiras">
+            <button class="bandeira-card ativa" data-bandeira="visa">
+              <img src="img/visa.svg" alt="Visa" />
+            </button>
+
+            <button class="bandeira-card" data-bandeira="master">
+              <img src="img/master.svg" alt="Master" />
+            </button>
+
+            <button class="bandeira-card" data-bandeira="elo">
+              <img src="img/elo.svg" alt="Elo" />
+            </button>
+
+            <button class="bandeira-card" data-bandeira="outros">
+              <img src="img/amex.svg" alt="Outros" />
+            </button>
+          </div>
+
+          <div class="grupo-parcelas">
+            <label>Parcelas</label>
+
+            <div class="controle-parcelas">
+              <button id="btnMenosParcela" class="btn-parcela">−</button>
+
+              <span id="numeroParcela">1x</span>
+
+              <button id="btnMaisParcela" class="btn-parcela">+</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- RESULTADO -->
+        <!-- RESULTADO -->
+        <div class="bloco-resultado">
+          <div class="titulo-resultado">Simulação</div>
+
+          <!-- cabeçalho da operação -->
+          <div class="resumo-operacao">
+            <div id="tituloOperacao">PIX</div>
+
+            <div id="subtituloOperacao">Tipo: Maquininha</div>
+          </div>
+
+          <div class="linha-divisoria"></div>
+
+          <!-- valores principais -->
+          <div class="linha-resultado">
+            <span>Valor da venda</span>
+
+            <strong id="valorVendaResumo"> R$ 0,00 </strong>
+          </div>
+
+          <div class="linha-resultado">
+            <span id="labelResultadoPrincipal"> Valor líquido </span>
+
+            <strong id="resultadoPrincipal"> R$ 0,00 </strong>
+          </div>
+
+          <div class="linha-divisoria"></div>
+
+          <!-- taxas -->
+          <div class="linha-resultado">
+            <span>Taxa aplicada</span>
+
+            <strong id="resultadoTaxa"> 0,00% </strong>
+          </div>
+
+          <div class="linha-resultado">
+            <span id="labelResultadoSecundario"> Valor da taxa </span>
+
+            <strong id="resultadoSecundario"> R$ 0,00 </strong>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="js/simulador.js"></script>
+    <!-- Registro do PWA -->
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker
+            .register("./sw.js")
+            .then(() => {
+              console.log("ZION PWA ativo com sucesso");
+            })
+            .catch((error) => {
+              console.error("Erro ao registrar PWA:", error);
+            });
+        });
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,1485 @@
+/* =========================================================
+   🔷 RESET GLOBAL
+========================================================= */
+body {
+  background: #f4f6f8;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 15px 20px;
+}
+
+/* =========================================================
+   🔷 ALERTA
+========================================================= */
+.alerta {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  min-width: 250px;
+  padding: 16px 20px;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 14px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: 0.3s;
+}
+
+.alerta.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.alerta.sucesso {
+  background: #27ae60;
+}
+
+.alerta.erro {
+  background: #e74c3c;
+}
+
+/* =========================================================
+   🔷 LAYOUT
+========================================================= */
+.painel-meio {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 20px;
+  margin: 10px 0 20px;
+}
+
+.bloco-esquerda,
+.bloco-direita,
+.bloco-taxas {
+  border: 1px solid #ccc;
+  padding: 15px;
+  background: #fff;
+}
+
+/* =========================================================
+   🔷 CAMPOS (PADRÃO LIMPO FINAL)
+========================================================= */
+.bloco-esquerda input,
+.bloco-esquerda select,
+.linha-topo-taxas input,
+.linha-topo-taxas select {
+  width: 100%;
+  max-width: 260px;
+  height: 36px;
+  padding: 6px 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  background: #fff;
+  box-sizing: border-box;
+  color: #999;
+}
+
+/* 🔷 quando preenchido */
+.preenchido {
+  color: #000 !important;
+}
+
+/* 🔷 placeholder */
+input::placeholder {
+  color: #999;
+}
+
+/* =========================================================
+   🔷 BOTÕES
+========================================================= */
+button {
+  border: none;
+  padding: 8px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+.btn-sucesso {
+  background: #27ae60;
+  color: #fff;
+}
+
+.btn-editar {
+  background: #34495e;
+  color: #fff;
+}
+
+.btn-excluir {
+  background: #e74c3c;
+  color: #fff;
+}
+
+/* =========================================================
+   🔷 AÇÕES
+========================================================= */
+.acoes-edicao {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* =========================================================
+   🔷 TABELA
+========================================================= */
+.tabela-taxas {
+  border-collapse: separate; /* 🔥 TROCA AQUI */
+  border-spacing: 0; /* 🔥 importante */
+  margin: 15px auto;
+}
+
+#tabelaContainer table {
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+#tabelaContainer td,
+#tabelaContainer th {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.tabela-taxas th {
+  background: #444;
+  color: #fff;
+  padding: 5px;
+  font-size: 12px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.tabela-taxas td {
+  border: 1px solid #ddd;
+  padding: 3px;
+  height: 24px;
+  font-size: 12px;
+  background: #f9f9f9;
+}
+
+.tabela-taxas input {
+  width: 58px;
+  padding: 3px;
+  font-size: 12px;
+}
+
+/* 🔷 proteção tabela */
+#tabelaContainer input {
+  height: 24px !important;
+}
+
+/* =========================================================
+   🔷 LINHAS TOPO
+========================================================= */
+.linha-topo-taxas {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+#limiteParcelamento {
+  width: 100%;
+  max-width: 260px;
+  height: 36px;
+  padding: 6px 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  background: #fff;
+  box-sizing: border-box;
+}
+/* =====================================
+   🔷 ESPAÇAMENTO ENTRE CAMPOS
+===================================== */
+
+.bloco-esquerda input,
+.bloco-esquerda select {
+  margin-bottom: 12px; /* 🔥 cria respiro elegante */
+}
+
+/* 🔷 último elemento não precisa espaço */
+.bloco-esquerda input:last-child,
+.bloco-esquerda select:last-child {
+  margin-bottom: 0;
+}
+/* 🔷 PADRÃO LINHA TOPO TAXAS */
+.linha-topo-taxas input,
+.linha-topo-taxas select {
+  width: 180px; /* 🔥 mesmo tamanho */
+}
+/* 🔷 SELECT INICIAL (placeholder visual) */
+.linha-topo-taxas select {
+  color: #999;
+}
+
+/* 🔷 QUANDO TEM VALOR */
+.linha-topo-taxas select.preenchido {
+  color: #000;
+}
+/* 🔷 SELECT PARCELAMENTO PADRÃO */
+#limiteParcelamento {
+  color: #999;
+}
+
+/* 🔷 QUANDO SELECIONADO */
+#limiteParcelamento.preenchido {
+  color: #000;
+}
+/* 🔷 FORÇA MESMO PADRÃO DOS OUTROS */
+#limiteParcelamento {
+  width: 180px;
+  height: 36px;
+  padding: 6px 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  background: #fff;
+  box-sizing: border-box;
+}
+/* 🔷 placeholder (cinza) */
+#limiteParcelamento {
+  color: #999;
+}
+
+/* 🔷 quando selecionado */
+#limiteParcelamento.preenchido {
+  color: #000;
+}
+/* 🔷 SELECT TIPO */
+#tipoClienteForm {
+  color: #999;
+}
+
+/* 🔷 QUANDO SELECIONADO */
+#tipoClienteForm.preenchido {
+  color: #000;
+}
+/* =====================================
+   🔷 LAYOUT TAXAS (NOVO)
+===================================== */
+
+.layout-taxas {
+  display: flex;
+  gap: 20px; /* controla o espaço entre tabela e banner */
+  align-items: flex-start;
+}
+
+.coluna-acoes {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* 🔥 espaço entre os cards */
+}
+
+.coluna-tabela {
+  flex: 1;
+}
+
+/* 🔷 CARDS */
+.card {
+  background: #f9f9f9;
+  border: 1px solid #dcdcdc;
+  padding: 15px;
+  border-radius: 6px;
+}
+
+/* 🔷 TÍTULO */
+.card h4 {
+  margin-bottom: 10px;
+}
+
+/* 🔷 CAMPOS */
+.card input,
+.card select {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+/* 🔷 BOTÕES */
+.acoes-edicao {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+/* 🔷 SELECT CINZA (SEM VALOR) */
+select {
+  color: #999;
+}
+
+/* 🔷 SELECT COM VALOR */
+select.preenchido {
+  color: #000;
+}
+/* 🔷 SELECT TIPO TAXA (NOVO PADRÃO) */
+#tipoTaxa {
+  color: #999;
+}
+
+#tipoTaxa.preenchido {
+  color: #000;
+}
+/* 🔷 SELECT TABELA */
+#tabelaTaxas {
+  color: #999;
+}
+
+#tabelaTaxas.preenchido {
+  color: #000;
+}
+/* =====================================
+   🔷 PADRÃO VISUAL IGUAL AO TOPO
+===================================== */
+
+.card input,
+.card select {
+  width: 100%;
+  max-width: 260px; /* 🔥 igual ao de cima */
+  height: 36px; /* 🔥 mesma altura */
+  padding: 6px 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  background: #fff;
+  box-sizing: border-box;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* 🔥 alinhamento igual */
+}
+
+.card input,
+.card select {
+  margin-bottom: 12px;
+}
+
+.card button {
+  width: 120px;
+}
+#limiteParcelamento {
+  width: 100%;
+}
+
+/* =====================================
+   🔷 MELHORIA VISUAL FINAL (REFINADA)
+===================================== */
+
+/* 🔼 BLOCO SUPERIOR */
+
+/* 🔽 CARD CRIAR */
+.bloco-taxas .topo-taxas {
+  background-color: #ffffff; /* branco limpo */
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #e3e6ea;
+}
+
+/* 🔽 CARD EDITAR */
+.acoes-edicao {
+  background-color: #f8f9fb; /* cinza mais leve */
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 12px;
+  border: 1px solid #e3e6ea;
+}
+/* =====================================
+   🔷 CARDS VISUAIS PROFISSIONAIS
+===================================== */
+
+/* 🔽 CARD CRIAR */
+.bloco-taxas .topo-taxas {
+  background-color: #ffffff;
+  padding: 18px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+}
+
+/* 🔽 CARD EDITAR */
+.acoes-edicao {
+  background-color: #f3f4f6; /* cinza levemente diferente */
+  padding: 18px;
+  border-radius: 10px;
+  margin-top: 14px;
+  border: 1px solid #e5e7eb;
+}
+
+/* 🔷 SEPARAÇÃO ENTRE CARDS */
+.bloco-taxas {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+/* 🔽 CARD CRIAR */
+.topo-taxas {
+  background-color: #ffffff;
+}
+
+/* 🔽 CARD EDITAR (diferenciado) */
+.acoes-edicao {
+  background-color: #eef1f5; /* mais escuro que o criar */
+}
+/* 🔷 ORGANIZA BOTÕES DO EDITAR */
+.acoes-edicao {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-start;
+}
+
+/* 🔷 TAMANHO PADRÃO DOS BOTÕES */
+.acoes-edicao button {
+  min-width: 140px;
+}
+.acoes-edicao {
+  align-items: center;
+}
+/* 🔷 PADRONIZA BOTÕES DO EDITAR */
+.acoes-edicao {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: stretch;
+}
+
+/* 🔷 TODOS IGUAIS */
+.acoes-edicao button {
+  width: 100%;
+  max-width: 220px;
+}
+.acoes-edicao {
+  display: flex;
+  gap: 10px;
+}
+
+.acoes-edicao button {
+  flex: 1;
+}
+/* 🔷 BOTÕES PERFEITAMENTE ALINHADOS */
+.acoes-edicao {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+
+/* 🔷 PADRÃO PROFISSIONAL */
+.acoes-edicao button {
+  width: 220px; /* 🔥 todos iguais */
+  text-align: center;
+}
+/* =====================================
+   🔷 LAYOUT: CARDS + TABELA LADO A LADO
+===================================== */
+
+.bloco-taxas {
+  display: grid;
+  grid-template-columns: 320px 1fr; /* esquerda (cards) + direita (tabela) */
+  gap: 36px;
+  align-items: start;
+}
+
+/* agrupa criar + editar na esquerda */
+.topo-taxas {
+  grid-column: 1;
+}
+
+.acoes-edicao {
+  grid-column: 1;
+}
+
+/* tabela vai pra direita */
+#tabelaContainer {
+  grid-column: 2;
+}
+/* =====================================
+   🔷 LINHAS MAIS COMPACTAS
+===================================== */
+
+#tabelaContainer table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#tabelaContainer th,
+#tabelaContainer td {
+  padding: 4px 6px; /* 🔥 reduz altura */
+  font-size: 12px;
+}
+#tabelaContainer th {
+  background-color: #1f2937; /* cinza escuro moderno */
+  color: #ffffff;
+  font-weight: 500;
+  text-align: center;
+}
+#tabelaContainer tr:nth-child(even) {
+  background-color: #f9fafb;
+}
+
+#tabelaContainer tr:hover {
+  background-color: #eef2f7;
+}
+/* 🔷 INPUTS DA TABELA */
+#tabelaContainer input {
+  width: 70px;
+  padding: 4px;
+  font-size: 13px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  text-align: center;
+  background-color: #ffffff;
+}
+
+/* 🔥 FOCO SUAVE */
+#tabelaContainer input:focus {
+  border-color: #22c55e;
+  outline: none;
+}
+#tabelaContainer table {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+#tabelaContainer th {
+  background-color: #374151; /* cinza moderno (menos agressivo) */
+}
+#tabelaContainer input {
+  height: 28px;
+  padding: 2px 4px;
+  font-size: 12px;
+}
+#tabelaContainer {
+  padding: 10px;
+}
+/* =====================================
+   🔷 AJUSTE FINO DE ALINHAMENTO
+===================================== */
+
+#tabelaContainer {
+  padding-top: 0-5 !important;
+}
+/* =====================================
+   🔷 ALINHAMENTO REAL COM CARD "CRIAR"
+===================================== */
+
+/* garante alinhamento no topo do grid */
+.bloco-taxas {
+  align-items: start;
+}
+
+/* 🔥 move a tabela para alinhar com o topo do card criar */
+#tabelaContainer {
+  margin-top: 38px; /* 🔥 AJUSTE FINO REAL */
+}
+#tabelaContainer {
+  margin-left: 50px; /* 🔥 empurra pra direita */
+  margin-top: -25px; /* 🔥 sobe */
+}
+#tabelaContainer input {
+  height: 24px;
+  padding: 2px 4px;
+  font-size: 12px;
+}
+/* =====================================
+   🔷 COLUNA MODALIDADE (PRIMEIRA COLUNA)
+===================================== */
+
+/* 🔷 LARGURA */
+#tabelaContainer th:first-child,
+#tabelaContainer td:first-child {
+  width: 160px;
+  min-width: 160px;
+  max-width: 160px;
+}
+
+/* 🔷 TEXTO */
+#tabelaContainer td:first-child {
+  font-size: 13px;
+  font-weight: 500;
+  text-align: center; /* 🔥 centraliza */
+}
+
+/* 🔷 CABEÇALHO */
+#tabelaContainer th:first-child {
+  text-align: center;
+}
+#tabelaContainer td:first-child {
+  letter-spacing: 0.3px;
+}
+
+/* =====================================
+   🔷 BORDA COMPLETA DA TABELA
+===================================== */
+
+#tabelaContainer table {
+  border: 1px solid #d1d5db; /* 🔥 borda externa suave */
+  border-radius: 8px;
+  overflow: hidden; /* 🔥 respeita o border-radius */
+}
+
+#tabelaContainer table {
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04); /* 🔥 leve profundidade */
+}
+#tabelaContainer td {
+  border-bottom: 1px solid #f0f0f0;
+}
+/* =====================================
+   🔷 TABELA ESTILO MODERNO (PREMIUM)
+===================================== */
+
+/* 🔷 CABEÇALHO */
+#tabelaContainer th {
+  background-color: #334155; /* 🔥 azul acinzentado moderno */
+  color: #f1f5f9;
+  font-weight: 500;
+  font-size: 13px;
+  padding: 8px;
+}
+
+/* 🔷 LINHAS */
+#tabelaContainer td {
+  /* background-color: #f0f9ff; /* 🔥 azul suave uniforme */
+  background-color: #e8e8e8; /* verde suave */
+  border-bottom: 1px solid #eef2f7;
+}
+
+/* 🔷 LINHAS ALTERNADAS (leve) */
+
+/* 🔷 HOVER SUAVE */
+#tabelaContainer tr:hover td {
+  background-color: #ab82ff; /* 🔥 leve destaque */
+}
+
+/* 🔷 INPUTS MAIS BONITOS */
+#tabelaContainer input {
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background-color: #ffffff; /* 🔥 mais vivo */
+  transition: 0.2s;
+}
+
+/* 🔷 FOCO */
+#tabelaContainer input:focus {
+  background-color: #ffffff;
+  border-color: #22c55e;
+}
+/* =====================================
+   🔷 TABELA PREMIUM (PERFUME FINAL)
+===================================== */
+
+/* 🔷 BORDA EXTERNA MAIS VISÍVEL */
+#tabelaContainer table {
+  border: 1px solid #cbd5e1; /* 🔥 mais definida */
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04); /* 🔥 profundidade leve */
+}
+
+/* 🔷 CABEÇALHO MAIS VIVO */
+#tabelaContainer th {
+  background: linear-gradient(180deg, #334155, #1e293b);
+  box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.1);
+  color: #f8fafc;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+/* 🔷 DIVISÃO DE COLUNAS (AGORA APARECE) */
+#tabelaContainer td,
+#tabelaContainer th {
+  border-right: 1px solid #e2e8f0;
+}
+
+/* 🔷 REMOVE BORDA DUPLA NA ÚLTIMA */
+#tabelaContainer td:last-child,
+#tabelaContainer th:last-child {
+  border-right: none;
+}
+
+/* 🔷 LINHAS MAIS DEFINIDAS */
+#tabelaContainer td {
+  border-bottom: 1px solid #ffffff; /* 🔥 linha branca elegante */
+}
+
+/* 🔷 HOVER MAIS SOFISTICADO */
+#tabelaContainer tr:hover td {
+  background-color: #e6e6fa; /* 🔥 elegante e leve */
+}
+
+/* 🔷 PRIMEIRA COLUNA (MODALIDADE) DESTACADA */
+#tabelaContainer td:first-child {
+  font-weight: 500;
+  color: #1e293b;
+}
+
+#tabelaContainer input {
+  border: none; /* 🔥 remove borda */
+  background-color: #ffffff;
+  box-shadow: 0 0 0 1px #e5e7eb inset; /* 🔥 simula borda suave */
+}
+#tabelaContainer td:first-child {
+  font-weight: 600;
+  color: #1e293b;
+}
+.logo-bandeira {
+  height: 18px;
+  width: auto;
+  display: block;
+  margin: 0 auto 2px auto;
+}
+
+.label-bandeira {
+  font-size: 10px;
+  color: #cbd5e1;
+}
+/* 🔷 ajuste individual das bandeiras */
+.col-outros img {
+  height: 22px; /* maior só para Amex */
+}
+/* 🔴 campo com valor zero */
+.valor-zero {
+  background-color: #fee2e2; /* vermelho bem suave */
+  border: 1px solid #ef4444;
+}
+/* 🔥 DESTACAR CAMPOS COM ZERO */
+.valor-zero {
+  background-color: #ffe2e2 !important;
+  border: 1px solid #ff4d4f !important;
+  color: #b30000 !important;
+}
+.bloqueado {
+  background: #eee;
+}
+.btn-secundario {
+  background: #e5e7eb;
+  color: #333;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.btn-secundario:hover {
+  background: #d1d5db;
+}
+/* 🔷 PADRÃO BOTÕES AÇÃO */
+/* =========================================================
+   🔷 PADRÃO ÚNICO PARA BOTÕES PRINCIPAIS
+   ========================================================= */
+.btn-acao {
+  width: 100%; /* 🔥 ocupa toda largura */
+  height: 42px; /* 🔥 altura fixa */
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+/* 🔷 BOTÃO CRIAR */
+.btn-nova {
+  background-color: #2e3f52;
+  color: #fff;
+}
+
+/* 🔷 BOTÃO EDITAR (quando muda dinamicamente via JS) */
+.btn-acao.edicao {
+  background-color: #f39c12;
+  color: #fff;
+}
+
+.btn-nova:hover {
+  background: #1e293b;
+}
+/* 🔷 BOX INTERNO (igual editar) */
+.box-acoes {
+  background: #e5e7eb;
+  padding: 12px;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+.box-criar {
+  display: flex;
+  justify-content: center; /* centraliza horizontal */
+}
+.btn-sucesso {
+  width: 80%;
+  max-width: 320px;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 8px;
+}
+.btn-sucesso {
+  display: block; /* essencial para centralizar */
+  margin: 20px auto; /* centraliza horizontal */
+  width: 80%; /* aumenta largura */
+  max-width: 320px; /* limita tamanho */
+  padding: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 8px;
+}
+.btn-padrao {
+  height: 42px; /* altura fixa padrão */
+  padding: 0 16px; /* lateral apenas */
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px; /* espaço ícone + texto */
+}
+
+/* 🔷 BOTÃO FORA DO CARD (CRIAR +) */
+.box-criar {
+  display: flex;
+  justify-content: center;
+}
+
+.box-criar .btn-sucesso {
+  width: 80%;
+  max-width: 320px;
+  margin: 15px auto;
+}
+
+/* 🔷 BOTÕES DENTRO DO CARD (EDITAR) */
+.acoes-edicao {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+
+.acoes-edicao button {
+  width: 220px;
+}
+
+.cliente-item {
+  display: grid;
+  grid-template-columns: 2fr 2fr 1fr 1fr 1fr 1fr;
+
+  padding: 6px 8px;
+  border-bottom: 1px solid #e5e5e5;
+  font-size: 12px;
+}
+
+.cliente-item:hover {
+  background: #8470ff;
+}
+
+.cliente-header {
+  display: grid;
+  grid-template-columns: 2fr 2fr 1fr 1fr 1fr 1fr;
+
+  background: #2f3e52; /* 🔥 mesma pegada da tabela */
+  color: #fff;
+
+  font-weight: 600;
+  font-size: 12px;
+
+  padding: 8px 8px;
+  border-radius: 6px 6px 0 0;
+}
+
+.cliente-header span {
+  display: flex;
+  align-items: center;
+}
+/* =========================================================
+   🔷 AÇÕES NA LINHA (BOTÕES)
+   ========================================================= */
+
+.acoes-linha {
+  display: flex; /* 🔹 alinha botões lado a lado */
+  gap: 6px; /* 🔹 espaço entre botões */
+}
+
+/* 🔹 botão pequeno dentro da linha */
+.acoes-linha button {
+  padding: 4px 6px;
+  font-size: 12px;
+  cursor: pointer;
+}
+/* =========================================================
+   🔷 PADRÃO DE INPUTS (TODOS IGUAIS)
+   ========================================================= */
+.bloco-esquerda input,
+.bloco-esquerda select,
+.card input,
+.card select {
+  width: 100%;
+  height: 42px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+/* =========================================================
+   🔷 BOTÕES PADRÃO (TODOS IGUAIS)
+   ========================================================= */
+button {
+  height: 32px;
+  width: 100%;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* 🔷 espaçamento entre botões */
+.acoes-edicao {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+/* =========================================================
+   🔷 CARD PADRÃO (ALINHAMENTO VISUAL)
+   ========================================================= */
+.card {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* 🔥 espaçamento consistente */
+}
+/* =========================================================
+   🔷 BLOCO CRIAR (TOPO)
+   ========================================================= */
+.bloco-esquerda {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center; /* 🔥 AQUI é o lugar certo */
+}
+
+.bloco-esquerda button {
+  margin-top: 5px;
+}
+.cliente-item {
+  background-color: #e8e8e8; /* 🔥 igual ao da tabela */
+  transition: 0.2s;
+}
+.cliente-item:hover {
+  background-color: #e6e6fa; /* 🔥 MESMA cor da tabela */
+}
+.cliente-item {
+  background-color: #e8e8e8;
+  border-bottom: 1px solid #ffffff; /* 🔥 igual à tabela */
+  transition: 0.2s;
+}
+.cliente-item:hover {
+  background-color: #e6e6fa; /* 🔥 mesma tonalidade */
+}
+.cliente-header {
+  background: #334155; /* 🔥 igual ao da tabela */
+  color: #fff;
+  font-weight: 600;
+}
+/* 🔷 PADRÃO SOMENTE PARA FORM DE CLIENTE */
+/* 🔷 PADRÃO FORÇADO PARA FORM */
+.btn-form {
+  height: 38px !important;
+  width: 100% !important;
+  border-radius: 6px !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  padding: 0 !important; /* 🔥 remove diferenças internas */
+  line-height: normal !important;
+}
+/* 🔥 FORÇA TOTAL NOS BOTÕES DO FORM */
+#btnCriar,
+#btnCancelar {
+  height: 42px !important;
+  padding: 0 !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  box-sizing: border-box !important;
+}
+#nomeEmpresa {
+  width: 100%;
+  height: 36px;
+  margin-bottom: 10px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+.cliente-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.lista-clientes {
+  max-height: 250px;
+  overflow-y: auto;
+}
+.topo-tabela {
+  margin-bottom: 10px;
+}
+
+.btn-pdf {
+  width: 100% !important;
+  height: 40px !important;
+  display: block !important;
+
+  background: #2f3e4e;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* 🔷 MODAL GERAR TABELLA PDF */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 9999;
+}
+
+.modal-box {
+  background: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  width: 300px;
+  text-align: center;
+}
+
+.modal-acoes {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center; /* 🔥 ALINHA NA MESMA ALTURA */
+  gap: 10px;
+}
+.modal-acoes button {
+  height: 42px !important;
+  min-width: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal-confirm {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.modal-box {
+  background: #1e1e1e;
+  color: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  width: 320px;
+  text-align: center;
+}
+
+.modal-acoes {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal-acoes button {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#btnOk {
+  background: #2ecc71;
+  color: #fff;
+}
+
+#btnCancel {
+  background: #e74c3c;
+  color: #fff;
+}
+.modal-box {
+  animation: aparecer 0.2s ease;
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.modal-acoes button:hover {
+  transform: scale(1.05);
+  transition: 0.2s;
+}
+.empresa-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-empresa-inline {
+  height: 35px;
+  width: auto;
+}
+
+.banner-lateral {
+  width: 320px;
+  height: 400px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+/* =========================================================
+🔷 COLUNA BANNER (CORREÇÃO)
+========================================================= */
+
+.coluna-banner {
+  width: 350px; /* largura fixa elegante */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* =========================================================
+🔷 BANNER VISUAL
+========================================================= */
+
+/* =========================================================
+🔷 BANNER WHITE LABEL (AJUSTE FINAL)
+========================================================= */
+
+.banner-lateral {
+  width: 100%; /* ocupa toda a coluna */
+  height: 420px; /* altura maior e elegante */
+
+  background-size: cover; /* 🔥 faz preencher tudo */
+  background-repeat: no-repeat;
+  background-position: center;
+
+  border-radius: 12px;
+
+  background-color: #ffffff; /* fundo branco elegante */
+
+  overflow: hidden;
+}
+/* =========================================================
+🔷 FIX RÁPIDO BANNER (SEM AFETAR RESTO)
+========================================================= */
+
+.layout-taxas {
+  display: flex;
+  gap: 16px;
+}
+
+.coluna-tabela {
+  flex: 1;
+}
+
+.coluna-banner {
+  width: 500px; /* 🔥 antes era 320 */
+  min-width: 500px;
+  flex-shrink: 0;
+  margin-top: -1px; /* 🔥 controla a altura */
+}
+
+.banner-lateral {
+  width: 100%;
+  height: 200px;
+  background-size: contain;
+  background-position: left center;
+  background-repeat: no-repeat;
+  background-color: #fff;
+  border-radius: 10px;
+}
+.boas-vindas {
+  font-size: 22px;
+  font-weight: 700;
+  color: #2c3e50;
+  margin: 10px 0 15px;
+}
+
+.boas-vindas strong {
+  color: #1abc9c;
+}
+.boas-vindas {
+  font-family: "Poppins", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 10px 0 15px;
+  letter-spacing: 0.5px;
+}
+.boas-vindas strong {
+  color: #1abc9c;
+  font-weight: 700;
+}
+/* =====================================================
+🔷 RESUMO (MÉTRICAS) - VISUAL ORGANIZADO
+===================================================== */
+
+.resumo-topo {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.card-resumo {
+  background: #34495e;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 6px;
+  min-width: 110px;
+  font-family: "Poppins", sans-serif;
+}
+
+.card-resumo span {
+  font-size: 16px;
+  font-weight: 600;
+  display: block;
+}
+
+.card-resumo p {
+  font-size: 11px;
+  margin: 0;
+  opacity: 0.8;
+}
+
+.card-resumo small {
+  font-size: 10px;
+  display: block;
+  margin-top: 4px;
+  opacity: 0.7;
+}
+.detalhe-tabela {
+  font-size: 11px;
+  opacity: 0.8;
+  display: block;
+  margin-top: 4px;
+}
+/* =========================================
+🔷 BLOCO DIREITA COM ESTRUTURA FLEX
+========================================= */
+
+.bloco-direita {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* =========================================
+🔷 LISTA COM SCROLL INTERNO
+========================================= */
+
+.lista-clientes {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+/* =========================================
+🔷 RESUMO FIXO EMBAIXO
+========================================= */
+
+.resumo-topo {
+  margin-top: 10px;
+}
+.lista-clientes {
+  flex: 1;
+  overflow-y: auto;
+}
+.resumo-linha {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #555;
+  font-family: "Poppins", sans-serif;
+}
+.resumo-linha {
+  display: block; /* 🔥 força ocupar linha inteira */
+  margin-top: 10px;
+  margin-bottom: 10px; /* 🔥 cria espaço REAL */
+}
+.resumo-linha {
+  position: absolute;
+}
+.lista-clientes {
+  margin-bottom: 10px; /* 🔥 garante separação */
+}
+.boas-vindas {
+  font-size: 16px; /* 🔥 antes estava grande */
+  font-weight: 500;
+  margin: 5px 0 10px 0;
+}
+.resumo-linha {
+  margin-top: 8px;
+  margin-bottom: 15px;
+  font-size: 13px;
+  color: #555;
+}
+.lista-clientes {
+  margin-top: 10px;
+  display: block;
+}
+.cliente-header {
+  margin-top: 10px;
+}
+
+/* 🔷 GARANTE QUE O CONTAINER RESPEITA ALTURA */
+.painel-meio {
+  display: flex;
+  align-items: flex-start; /* 🔥 evita esticar errado */
+}
+
+/* 🔷 COLUNA DIREITA ORGANIZADA */
+.bloco-direita {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 🔷 LISTA OCUPA ESPAÇO CORRETO */
+.lista-clientes {
+  display: block;
+}
+
+/* 🔷 RESUMO FICA EMBAIXO SEM SUBIR */
+.resumo-linha {
+  margin-top: 10px;
+  display: block;
+  clear: both; /* 🔥 ESSA LINHA RESOLVE O BUG */
+}
+.resumo-linha {
+  display: block;
+  position: relative;
+  clear: both;
+
+  margin-top: 10px;
+  font-size: 13px;
+  color: #555;
+}
+
+.bloco-direita {
+  display: block;
+}
+
+.lista-clientes {
+  display: block;
+}
+.resumo-linha {
+  font-size: 12px;
+  color: #777;
+}
+/* ============================
+   🚪 TOPO ADMIN
+============================ */
+
+.topo-admin {
+  position: fixed;
+
+  top: 20px;
+  right: 35px;
+
+  z-index: 999;
+
+  transform: translateY(20px);
+}
+
+.btn-sair {
+  background: #1f2937;
+  color: white;
+
+  border: none;
+  border-radius: 8px;
+
+  padding: 8px 16px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.btn-sair:hover {
+  transform: translateY(-1px);
+  opacity: 0.9;
+}
+/* ============================
+   🔍 BUSCA HEADER
+============================ */
+
+.busca-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  color: white;
+  font-weight: 600;
+}
+
+.busca-header input {
+  width: 150px;
+
+  padding: 6px 10px;
+
+  border: none;
+  border-radius: 6px;
+
+  font-size: 13px;
+}
+.titulo-busca {
+  color: white;
+  font-weight: 600;
+  font-size: 14px;
+}
+/* ============================
+   🔍 BUSCA ADMIN
+============================ */
+
+.busca-admin {
+  margin-top: 12px;
+  margin-bottom: 14px;
+}
+
+.busca-admin input {
+  width: 260px;
+
+  padding: 10px 14px;
+
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+
+  font-size: 14px;
+}

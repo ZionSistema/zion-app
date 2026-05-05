@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <!-- =====================================================
+         🔷 CONFIGURAÇÕES BÁSICAS
+    ====================================================== -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- 🔷 TÍTULO DINÂMICO (PODE MUDAR POR EMPRESA NO FUTURO) -->
+    <title id="tituloPagina">Acesso ao Sistema</title>
+
+    <!-- 🔷 FAVICON -->
+    <link rel="icon" href="img/sistema/favicon.png" />
+
+    <!-- 🔷 CSS DO LOGIN -->
+    <link rel="stylesheet" href="css/login.css" />
+  </head>
+
+  <body>
+    <!-- =====================================================
+         🔷 CARD CENTRAL
+    ====================================================== -->
+    <div class="card">
+      <!-- 🔷 LOGO DO SISTEMA (ADMIN / PADRÃO) -->
+      <div class="logo-container">
+        <img src="img/sistema/logo.png" alt="Logo do Sistema" />
+      </div>
+
+      <!-- 🔷 TÍTULO -->
+      <h2 class="titulo-login">🔐 Acesso da Empresa</h2>
+      <p class="subtitulo-login">Entre para continuar</p>
+
+      <!-- =====================================================
+           🔷 FORMULÁRIO (ENTER FUNCIONA AQUI)
+      ====================================================== -->
+      <form
+        onsubmit="
+          logarEmpresa();
+          return false;
+        "
+      >
+        <!-- 🔷 CAMPO LOGIN -->
+        <input
+          type="text"
+          id="login"
+          placeholder="Login da Empresa"
+          autocomplete="username"
+          required
+        />
+
+        <!-- 🔷 CAMPO SENHA -->
+        <div class="input-senha-container">
+          <input
+            type="password"
+            id="senha"
+            placeholder="Senha (6 dígitos)"
+            autocomplete="current-password"
+            required
+          />
+
+          <span class="toggle-senha" onclick="toggleSenha()">
+            <span id="icone-olho">👁</span>
+          </span>
+        </div>
+
+        <!-- =====================================================
+             🔷 BOTÕES
+        ====================================================== -->
+
+        <!-- 🔷 BOTÃO PRINCIPAL -->
+        <button type="submit" class="primary">Entrar</button>
+
+        <!-- 🔷 BOTÃO LIMPAR -->
+        <button type="button" class="secondary" onclick="limparCampos()">
+          Limpar campos
+        </button>
+      </form>
+
+      <!-- 🔷 BOTÃO ESQUECI SENHA -->
+      <button type="button" class="dark" onclick="recuperarSenha()">
+        Esqueci minha senha
+      </button>
+
+      <!-- =====================================================
+           🔷 ALERTA (SUCESSO / ERRO)
+      ====================================================== -->
+      <div id="alerta" class="alerta"></div>
+    </div>
+
+    <!-- =====================================================
+         🔷 SCRIPT PRINCIPAL
+    ====================================================== -->
+    <script src="js/login-empresa.js"></script>
+  </body>
+</html>

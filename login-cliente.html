@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <title>Acesso Cliente</title>
+
+    <link id="faviconEmpresa" rel="icon" href="img/sistema/favicon.png" />
+
+    <link rel="stylesheet" href="css/login-cliente.css" />
+  </head>
+
+  <body>
+    <div class="app-login">
+      <!-- LOGO -->
+      <div class="branding-zion">
+        <img src="img/sistema/favicon.png" class="logo-zion" alt="Zion" />
+
+        <span class="powered-by"> Powered by Zion </span>
+      </div>
+
+      <!-- TEXTO -->
+      <h1>Bem-vindo!</h1>
+
+      <p class="subtitulo">
+        Digite seu CPF ou CNPJ e sua senha para acessar o simulador.
+      </p>
+
+      <!-- DOCUMENTO -->
+      <label>CPF ou CNPJ</label>
+
+      <input
+        type="text"
+        id="documentoCliente"
+        placeholder="Digite seu CPF ou CNPJ"
+        oninput="formatarDocumento(this)"
+      />
+
+      <!-- SENHA -->
+      <label>Senha</label>
+
+      <div class="senha-box">
+        <input
+          type="password"
+          id="senhaCliente"
+          placeholder="Digite sua senha"
+        />
+
+        <!-- ÍCONE OLHO -->
+        <span
+          id="icone-olho"
+          class="toggle-senha"
+          onclick="toggleSenhaCliente()"
+        >
+          <!-- olho fechado inicial -->
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8
+              a18.45 18.45 0 0 1 5.06-5.94"
+            ></path>
+
+            <path
+              d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8
+              a18.5 18.5 0 0 1-2.16 3.19"
+            ></path>
+
+            <path d="M14.12 14.12a3 3 0 1 1-4.24-4.24"></path>
+
+            <line x1="1" y1="1" x2="23" y2="23"></line>
+          </svg>
+        </span>
+      </div>
+
+      <!-- LEMBRAR ACESSO -->
+      <div class="lembrar-box">
+        <input type="checkbox" id="lembrarCliente" />
+
+        <label for="lembrarCliente"> Lembrar meu acesso </label>
+      </div>
+
+      <!-- BOTÃO -->
+      <button onclick="entrarCliente()">Entrar</button>
+
+      <!-- SEGURANÇA -->
+      <div class="seguranca-box">
+        <div class="icone-seguranca">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            <path d="M9 12l2 2 4-4" />
+          </svg>
+        </div>
+
+        <div class="texto-seguranca">
+          <strong>Acesso Seguro</strong>
+
+          <p>Seus dados protegidos com criptografia avançada.</p>
+        </div>
+      </div>
+
+      <!-- ALERTA -->
+      <div id="alertaCliente"></div>
+    </div>
+
+    <script src="js/login-cliente.js"></script>
+  </body>
+</html>

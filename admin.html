@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Painel Administrativo</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link id="faviconEmpresa" rel="icon" href="img/sistema/favicon.png" />
+
+    <link rel="stylesheet" href="css/admin.css?v=3" />
+  </head>
+
+  <body>
+    <!-- 🔷 TOPO ADMIN -->
+    <div class="topo-admin">
+      <button class="btn-sair" onclick="logoutEmpresa()">🚪 Sair</button>
+    </div>
+    <!-- 🔷 MEIO -->
+    <div class="painel-meio">
+      <!-- 🔷 ESQUERDA -->
+      <div class="bloco-esquerda">
+        <h3>Criar Acesso ao Simulador</h3>
+
+        <input type="text" id="nomeCliente" placeholder="Nome do Cliente" />
+        <input type="text" id="loginCliente" placeholder="CPF / CNPJ" />
+
+        <select id="tipoCliente">
+          <option value="">Escolha o tipo</option>
+          <option value="maquininha">Maquininha</option>
+          <option value="link">Link</option>
+        </select>
+
+        <select id="tabelaCliente">
+          <option value="">Selecione uma tabela</option>
+        </select>
+
+        <button
+          id="btnCriar"
+          class="btn-acao btn-nova"
+          onclick="cadastrarCliente()"
+        >
+          CRIAR +
+        </button>
+
+        <button
+          id="btnCancelar"
+          class="btn-secundario btn-form"
+          onclick="cancelarEdicao()"
+        >
+          ❌ Cancelar
+        </button>
+      </div>
+
+      <!-- 🔷 DIREITA -->
+      <div class="bloco-direita">
+        <h3>Lista de Acessos</h3>
+
+        <h2 id="nomeEmpresa" class="boas-vindas"></h2>
+        <!-- 🔍 BUSCA CLIENTE -->
+        <div class="busca-admin">
+          <input
+            type="text"
+            id="buscaCliente"
+            placeholder="🔍 Buscar CPF ou CNPJ..."
+            oninput="
+              formatarBusca(this);
+              buscarCliente(this);
+            "
+          />
+        </div>
+
+        <div class="cliente-header">
+          <span>Nome</span>
+          <span>CPF/CNPJ</span>
+          <span>Senha</span>
+          <span>Tabela</span>
+          <span>Tipo</span>
+          <span>Ações</span>
+        </div>
+        <div class="lista-clientes"></div>
+
+        <!-- ✅ RESUMO FIXO CORRETO -->
+        <div class="resumo-linha">
+          <span id="totalClientes">0</span> clientes |
+          <span id="totalTabelas">0</span> tabelas (<span id="totalMaquininha"
+            >0</span
+          >
+          maquininha | <span id="totalLink">0</span> link)
+        </div>
+      </div>
+    </div>
+
+    <!-- 🔷 TAXAS -->
+    <div class="bloco-taxas">
+      <div class="layout-taxas">
+        <div class="coluna-acoes">
+          <div class="card">
+            <h4>Criar tabela</h4>
+
+            <input
+              type="text"
+              id="nomeTabela"
+              placeholder="Criar nova tabela (Ex: A1)"
+            />
+
+            <select id="limiteParcelamento">
+              <option disabled selected>Selecionar Parc. 12X, 18X, 21X</option>
+              <option value="21">Até 21x</option>
+              <option value="18">Até 18x</option>
+              <option value="12">Até 12x</option>
+            </select>
+
+            <select id="tipoTaxa">
+              <option disabled selected>Tipo da Taxa</option>
+              <option value="maquininha">Maquininha</option>
+              <option value="link">Link</option>
+            </select>
+
+            <div class="acoes-edicao">
+              <button id="btnNovaTabela" class="btn-editar">
+                📊 Nova Tabela
+              </button>
+              <button id="btnSalvar" class="btn-sucesso">💾 Salvar</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <h4>Editar tabela</h4>
+
+            <select id="tabelaTaxas">
+              <option value="">Selecione uma tabela</option>
+            </select>
+
+            <div class="acoes-edicao">
+              <button id="btnEditar" class="btn-editar">✏️ Editar</button>
+              <button id="btnSalvarEdicao" class="btn-sucesso">
+                💾 Salvar Alteração
+              </button>
+              <button id="btnExcluir" class="btn-excluir">🗑️ Excluir</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="coluna-tabela">
+          <div id="tabelaContainer"></div>
+        </div>
+
+        <div class="coluna-banner">
+          <img id="bannerEmpresa" class="banner-lateral" />
+        </div>
+      </div>
+    </div>
+
+    <!-- 🔷 JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="js/relatorio.js"></script>
+    <script src="js/admin.js"></script>
+
+    <!-- 🔷 MODAL -->
+    <div id="modalPDF" class="modal-overlay" style="display: none">
+      <div class="modal-box">
+        <h3>📄 Gerar Tabela</h3>
+        <p>Deseja gerar a tabela atual em PDF?</p>
+
+        <div class="modal-acoes">
+          <button onclick="confirmarPDF()" class="btn-sucesso">✔ Sim</button>
+          <button onclick="fecharModalPDF()" class="btn-cancelar">
+            ❌ Cancelar
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
