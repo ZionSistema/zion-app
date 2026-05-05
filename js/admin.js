@@ -1630,15 +1630,46 @@ function editarCliente(id) {
 
   mostrarAlerta("✏️ Editando cliente...");
 }
+// =====================================
+// 📋 COPIAR CREDENCIAIS + GUIA PWA
+// =====================================
 function copiarCredenciais(cliente) {
-  const texto = `Cliente: ${cliente.nome}
+  const texto = `📲 Bem-vindo ao Simulador Zion!
 
-Login: ${cliente.cpf_cnpj}
-Senha: ${cliente.senha}`;
+Seu acesso já está liberado.
+
+Acesse agora e instale seu aplicativo:
+
+https://zion-app-ten.vercel.app
+
+━━━━━━━━━━━━━━━━━━━━
+
+🏢 Cliente: ${cliente.nome}
+
+🔐 Login: ${cliente.cpf_cnpj}
+🔑 Senha: ${cliente.senha}
+
+━━━━━━━━━━━━━━━━━━━━
+
+📱 INSTALAÇÃO ANDROID
+
+1. Abra o link no Google Chrome
+2. Toque nos 3 pontos (⋮)
+3. Toque em "Adicionar à tela inicial"
+
+🍎 INSTALAÇÃO iPhone (iOS)
+
+1. Abra o link no Safari
+2. Toque em "Compartilhar"
+3. Toque em "Adicionar à Tela de Início"
+
+━━━━━━━━━━━━━━━━━━━━
+
+✨ Após a instalação, o ícone do aplicativo ficará disponível na tela inicial do seu celular, funcionando como um app profissional, com acesso rápido sempre que precisar.`;
 
   navigator.clipboard.writeText(texto);
 
-  mostrarAlerta("📋 Credenciais copiadas!");
+  mostrarAlerta("📋 Credenciais + guia de instalação copiados!");
 }
 
 function cancelarEdicao() {
