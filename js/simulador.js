@@ -491,9 +491,12 @@ if (blocoResultado) {
 
   blocoResultado.addEventListener("click", async () => {
     try {
+      // nome dinâmico da empresa
+      const nomeEmpresa = dadosCliente.nome_empresa || "SISTEMA";
+
       // monta texto da simulação
       const texto = `
-SIMULAÇÃO ZIONPAY
+SIMULAÇÃO ${nomeEmpresa.toUpperCase()}
 
 ${document.getElementById("tituloOperacao").innerText}
 ${document.getElementById("subtituloOperacao").innerText}
@@ -508,7 +511,7 @@ ${document.getElementById("labelResultadoSecundario").innerText}: ${document.get
       // copia
       await navigator.clipboard.writeText(texto);
 
-      // toast visual
+      // feedback visual
       mostrarToastCopiado();
     } catch (erro) {
       console.error("Erro ao copiar:", erro);
