@@ -102,7 +102,10 @@ let tentativasLoginCliente = 0;
 // =====================================================
 
 async function entrarCliente() {
+  let loginSucesso = false;
+
   try {
+    sessionStorage.removeItem("clienteLogado");
     // =====================================
     // CAPTURA E LIMPEZA DOS DADOS
     // =====================================
@@ -174,6 +177,9 @@ async function entrarCliente() {
 
     sessionStorage.setItem("clienteLogado", JSON.stringify(dados));
 
+    tentativasLoginCliente = 0;
+    loginSucesso = true;
+
     // =====================================
     // REDIRECIONAR PARA O SIMULADOR
     // =====================================
@@ -193,7 +199,9 @@ async function entrarCliente() {
   } catch (error) {
     console.error("ERRO LOGIN:", error);
 
-    tentativasLoginCliente++;
+    if (!loginSucesso) {
+      tentativasLoginCliente = tentativasLoginCliente + 1;
+    }
 
     if (tentativasLoginCliente === 1) {
       mostrarAlertaCliente(
