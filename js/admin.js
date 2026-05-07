@@ -1633,14 +1633,37 @@ function editarCliente(id) {
 // =====================================
 // 📋 COPIAR CREDENCIAIS + GUIA PWA
 // =====================================
+// =====================================
+// 📋 COPIAR CREDENCIAIS + GUIA PWA
+// WHITE LABEL AUTOMÁTICO
+// =====================================
 function copiarCredenciais(cliente) {
-  const texto = `📲 Bem-vindo ao Simulador Zion!
+  // 🔷 nome da empresa logada
+  const empresaNome = localStorage.getItem("empresa_nome") || "Sistema";
+
+  // 🔷 empresa id/nome normalizado
+  const empresaSlug = empresaNome.toLowerCase().trim();
+
+  // 🔷 link padrão (fallback)
+  let linkApp = "https://zion-app-ten.vercel.app";
+
+  // 🔷 empresas com domínio próprio
+  if (empresaSlug.includes("megaec")) {
+    linkApp = "https://app.megaecpay.com.br";
+  }
+
+  // futuramente:
+  // if (empresaSlug.includes("outraempresa")) {
+  //   linkApp = "https://app.outraempresa.com.br";
+  // }
+
+  const texto = `📲 Bem-vindo ao Simulador ${empresaNome}!
 
 Seu acesso já está liberado.
 
 Acesse agora e instale seu aplicativo:
 
-https://zion-app-ten.vercel.app
+${linkApp}
 
 ━━━━━━━━━━━━━━━━━━━━
 
