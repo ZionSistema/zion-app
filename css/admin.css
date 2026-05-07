@@ -1230,7 +1230,7 @@ button {
 }
 
 .boas-vindas strong {
-  color: #1abc9c;
+  color: #43b649; /* verde alinhado com o logo MegaecPay */
 }
 .boas-vindas {
   font-family: "Poppins", sans-serif;
