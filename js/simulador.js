@@ -23,6 +23,22 @@ document.getElementById("empresaCliente").innerHTML =
 
 document.getElementById("logoEmpresa").src = dadosCliente.logo_simulador;
 
+// =====================================
+// LOGOUT CLIENTE
+// =====================================
+
+const btnLogoutCliente = document.getElementById("btnLogoutCliente");
+
+if (btnLogoutCliente) {
+  btnLogoutCliente.addEventListener("click", () => {
+    // encerra sessão atual
+    sessionStorage.removeItem("clienteLogado");
+
+    // volta para tela de login
+    window.location.href = "login-cliente.html";
+  });
+}
+
 // DEBUG
 console.log("CLIENTE LOGADO:", dadosCliente);
 
