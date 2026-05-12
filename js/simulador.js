@@ -193,6 +193,14 @@ function atualizarParcelas() {
 // buscar limite da tabela
 async function carregarLimiteParcelas() {
   try {
+    console.log("CAMPO ANTIGO:", dadosCliente.tabela_nome);
+
+    console.log(
+      "CAMPO REAL:",
+      btnTabMaquininha.classList.contains("ativo")
+        ? dadosCliente.tabela_maquininha
+        : dadosCliente.tabela_link,
+    );
     const response = await fetch(
       `https://megaec-backend.vercel.app/api/parcelas?empresa_id=${dadosCliente.empresa_id}&tabela_nome=${dadosCliente.tabela_nome}`,
     );
@@ -234,7 +242,7 @@ btnMenosParcela.addEventListener("click", () => {
 });
 
 // iniciar
-carregarLimiteParcelas();
+//carregarLimiteParcelas();
 
 atualizarParcelas();
 // =====================================
@@ -261,6 +269,16 @@ async function carregarTaxasCliente() {
     const dados = await response.json();
 
     taxasCliente = dados;
+
+    maxParcelas = 12;
+
+    if (taxasCliente.length >= 23) {
+      maxParcelas = 21;
+    } else if (taxasCliente.length >= 20) {
+      maxParcelas = 18;
+    }
+
+    console.log("LIMITE PELO ARRAY:", maxParcelas);
 
     console.log("TABELA ATIVA:", tabelaAtual);
 
