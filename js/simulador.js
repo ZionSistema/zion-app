@@ -244,6 +244,18 @@ btnMaisParcela.addEventListener("click", () => {
   calcularSimulacao();
 });
 
+// botão -
+btnMenosParcela.addEventListener("click", () => {
+  if (parcelaAtual > 1) {
+    parcelaAtual--;
+
+    atualizarParcelas();
+
+    // recalcula imediatamente
+    calcularSimulacao();
+  }
+});
+
 // iniciar
 //carregarLimiteParcelas();
 
