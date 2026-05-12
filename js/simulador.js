@@ -230,12 +230,19 @@ async function carregarLimiteParcelas() {
 //});
 
 btnMaisParcela.addEventListener("click", () => {
-  // incrementa
-  parcelaAtual++;
+  // tenta subir uma parcela
+  const proximaParcela = parcelaAtual + 1;
 
-  // trava no limite real da tabela
-  if (parcelaAtual > maxParcelas) {
-    parcelaAtual = maxParcelas;
+  // verifica se existe essa modalidade na tabela
+  const existeParcela = taxasCliente.find(
+    (item) =>
+      item.modalidade?.trim().toLowerCase() ===
+      `${proximaParcela}x`.toLowerCase(),
+  );
+
+  // só sobe se existir na tabela
+  if (existeParcela) {
+    parcelaAtual = proximaParcela;
   }
 
   atualizarParcelas();
