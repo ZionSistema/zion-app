@@ -218,15 +218,30 @@ async function carregarLimiteParcelas() {
 }
 
 // botão +
+//btnMaisParcela.addEventListener("click", () => {
+//if (parcelaAtual < maxParcelas) {
+//parcelaAtual++;
+
+//atualizarParcelas();
+
+// recalcula imediatamente
+//calcularSimulacao();
+//}
+//});
+
 btnMaisParcela.addEventListener("click", () => {
-  if (parcelaAtual < maxParcelas) {
-    parcelaAtual++;
+  // incrementa
+  parcelaAtual++;
 
-    atualizarParcelas();
-
-    // recalcula imediatamente
-    calcularSimulacao();
+  // trava no limite real da tabela
+  if (parcelaAtual > maxParcelas) {
+    parcelaAtual = maxParcelas;
   }
+
+  atualizarParcelas();
+
+  // recalcula imediatamente
+  calcularSimulacao();
 });
 
 // botão -
