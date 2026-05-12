@@ -230,27 +230,23 @@ async function carregarLimiteParcelas() {
 //});
 
 btnMaisParcela.addEventListener("click", () => {
-  // calcula limite real baseado no array
-  const limiteReal = taxasCliente.length - 2;
+  // monta a próxima parcela que o usuário quer acessar
+  const proximaParcela = `${parcelaAtual + 1}x`;
 
-  // só incrementa se ainda estiver abaixo do limite
-  if (parcelaAtual < limiteReal) {
+  // verifica se ela realmente existe na tabela carregada
+  const existeParcela = taxasCliente.some(
+    (item) =>
+      String(item.modalidade || "")
+        .trim()
+        .toLowerCase() === proximaParcela.toLowerCase(),
+  );
+
+  // só avança se existir de verdade
+  if (existeParcela) {
     parcelaAtual++;
-  }
-
-  atualizarParcelas();
-
-  calcularSimulacao();
-});
-
-// botão -
-btnMenosParcela.addEventListener("click", () => {
-  if (parcelaAtual > 1) {
-    parcelaAtual--;
 
     atualizarParcelas();
 
-    // recalcula imediatamente
     calcularSimulacao();
   }
 });
