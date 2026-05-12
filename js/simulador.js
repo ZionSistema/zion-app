@@ -253,10 +253,25 @@ let taxasCliente = [];
 
 async function carregarTaxasCliente() {
   try {
+    // =====================================
+    // IDENTIFICAR TABELA ATIVA
+    // =====================================
     let tabelaAtual = btnTabMaquininha.classList.contains("ativo")
       ? dadosCliente.tabela_maquininha
       : dadosCliente.tabela_link;
 
+    // =====================================
+    // RESET DE SEGURANÇA AO TROCAR TABELA
+    // evita herdar parcelas da tabela anterior
+    // =====================================
+    maxParcelas = 12;
+    parcelaAtual = 1;
+
+    atualizarParcelas();
+
+    // =====================================
+    // BUSCAR TAXAS DA TABELA
+    // =====================================
     const response = await fetch(
       `https://megaec-backend.vercel.app/api/taxas?tabela=${tabelaAtual}`,
       {
@@ -270,26 +285,29 @@ async function carregarTaxasCliente() {
 
     taxasCliente = dados;
 
-    maxParcelas = 12;
-
+    // =====================================
+    // DETECTAR LIMITE PELO ARRAY
+    // Array(14) = 12x
+    // Array(20) = 18x
+    // Array(23) = 21x
+    // =====================================
     if (taxasCliente.length >= 23) {
       maxParcelas = 21;
     } else if (taxasCliente.length >= 20) {
       maxParcelas = 18;
+    } else {
+      maxParcelas = 12;
     }
 
     console.log("LIMITE PELO ARRAY:", maxParcelas);
-
-    if (parcelaAtual > maxParcelas) {
-      parcelaAtual = maxParcelas;
-    }
-
-    atualizarParcelas();
 
     console.log("TABELA ATIVA:", tabelaAtual);
 
     console.log("TAXAS CARREGADAS:", taxasCliente);
 
+    // =====================================
+    // RECALCULAR TELA
+    // =====================================
     calcularSimulacao();
   } catch (error) {
     console.error("ERRO AO CARREGAR TAXAS:", error);
