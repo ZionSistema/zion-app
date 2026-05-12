@@ -280,6 +280,12 @@ async function carregarTaxasCliente() {
 
     console.log("LIMITE PELO ARRAY:", maxParcelas);
 
+    if (parcelaAtual > maxParcelas) {
+      parcelaAtual = maxParcelas;
+    }
+
+    atualizarParcelas();
+
     console.log("TABELA ATIVA:", tabelaAtual);
 
     console.log("TAXAS CARREGADAS:", taxasCliente);
